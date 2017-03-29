@@ -1,13 +1,13 @@
 // Twitch Info
 
 // The client ID
-var twitchClientId = "e0q2qpkzm4t8ausv47yr0q9mnmn61v";
+const twitchClientId = "3h3f7dvc7m354eioh0of5wd7rtqim3";
 // The redirect URI
-var twitchRedirectUri = "https://www.bitbossbattles.io/authtwitch.html";
+const twitchRedirectUri = "https://bbb.roolurker.xyz/authtwitch.html";
 
 // Streamlabs Info
 
 // The client ID
-var slClientId = "dcAqt59QhkdINGqTePoZAhCR0bFILs4ZJNNkIi6c";
+const slClientId = "nghcHWDWJ8kzdarhU441yVaqjipha5DuR4Xa7pk1";
 // The redirect URI
-var slRedirectUri = "https://www.bitbossbattles.io/authsl.html";
+const slRedirectUri = "https://bbb.roolurker.xyz/authsl.html";

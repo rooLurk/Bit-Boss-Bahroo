@@ -11,7 +11,7 @@
 				var current = GetUrlParameter("cur");
 				var max = GetUrlParameter("max");
 				
-				if (boss == null || max == null || current == null) { $("body").html("<p>You're missing a URL parameter! Try re-copying the link.</p>"); return; }
+				if (boss === null || max === null || current === null) { $("body").html("<p>You're missing a URL parameter! Try re-copying the link.</p>"); return; }
 				
 				max = parseInt(max);
 				current = parseInt(current);
@@ -27,6 +27,9 @@
 			});
 			
 			// Gets a parameter from the URL.
+			/**
+			 * @return {null}
+			 */
 			function GetUrlParameter(sParam) {
 
 				var sPageURL = decodeURIComponent(window.location.search.substring(1)),

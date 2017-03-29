@@ -1,125 +1,79 @@
 <html>
-    <head>
-        <title>Bit Boss Battles | Settings</title>
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="./stylesheets/spectrum.css" rel="stylesheet">
-        <link href="./stylesheets/common.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="./javascripts/spectrum.js"></script>
-        <script src="./javascripts/info.js"></script>
-        <script src="./javascripts/cookies.js"></script>
-        <script src="./javascripts/settings.js"></script>
-    </head>
-    <body>
-        <div class="main">
-            <div class="container" style="margin-top: 0; padding-top: 0;">
-                <div style="text-align: center;"><img src="./images/logo.png"><br><h1 style="font-family: 'Press Start 2P', cursive;">By Nifty255</h1></div>
-            </div>
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li><a href="./">Home</a></li>
-                <li><a href="./launcher">Launcher</a></li>
-                <li class="active"><a>Settings</a></li>
-				<li><a href="./help">Help Page</a></li>
-            </ul>
-            <div id="status">Your changes will be saved automatically.</div>
-            <div class="container">
-                <p>Change your settings here.</p>
-                <p><span style="color: red;">NOTE:</span> If the widget is open while a setting is changed, you must refresh it for the change to take effect.</p>
-                <h3>General Settings</h3><br>
-                <div class="tooltipable">
-                    <input type="checkbox" id="sound"><label for="sound">Sound Effects</label><br>
-                    <p class="tooltipy padded">Sound effects play when the boss is struck or defeated.</p>
-                </div>
-                <div class="tooltipable">
-                    <input type="checkbox" id="trans"><label for="trans">Transparent Background</label><br>
-                    <p class="tooltipy padded">If you use the widget through OBS, this disables the background.</p>
-                </div>
-                <div class="tooltipable">
-                    <input type="checkbox" id="chroma"><label for="chroma">Chroma (Blue) Background</label><br>
-                    <p class="tooltipy padded">This turns the widget's background blue, overriding the Transparent Background option.</p>
-                </div>
-                <div class="tooltipable">
-                    <input type="checkbox" id="persistent"><label for="persistent">Persistence</label><br>
-                    <p class="tooltipy padded">Saves cookies about the current boss and their health for persistence between streams.</p>
-                </div>
-                <div class="tooltipable">
-                    <input type="checkbox" id="bossheal"><label for="bossheal">Boss Healing</label><br>
-                    <p class="tooltipy padded">When enabled, the current Bit Boss can donate bits to heal himself. The Bit Boss cannot increase his/her max health, only heal.</p>
-                </div>
-                <div class="tooltipable">
-                    <input type="checkbox" id="hideavtr"><label for="hideavtr">Hidden Avatar</label><br>
-                    <p class="tooltipy padded">When enabled, the Bit Boss's avatar will be hidden. This is useful for streamers who have concerns of viewers with inappropriate avatars becoming the Bit Boss.</p>
-                </div>
-                <h3>HP Settings</h3><br>
-                <div style="width: 50%; float: right;">
-                    <div class="subsettings showing" id="settings-overkill">
-                        <table>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Initial HP:</td>
-                                <td class="setting"><input type="number" id="hp-o-init" min="100" max="25000" value="1000" step="100" style="width: 100px;"></td>
-                            </tr>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Multiplier:</td>
-                                <td class="setting"><input type="number" id="hp-mult" min="1" max="10" value="1" step="1" style="width: 100px;"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="subsettings hidden" id="settings-progress">
-                        <table>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Initial HP:</td>
-                                <td class="setting"><input type="number" id="hp-p-init" min="100" max="25000" value="1000" step="100" style="width: 100px;"></td>
-                            </tr>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Increment:</td>
-                                <td class="setting"><input type="number" id="hp-incr" min="100" max="5000" value="100" step="100" style="width: 100px;"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="subsettings hidden" id="settings-constant">
-                        <table>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">HP:</td>
-                                <td class="setting"><input type="number" id="hp-amnt" min="100" max="25000" value="1000" step="100" style="width: 100px;"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div style="width: 50%;">
-                    <div style="padding-bottom: 10px;"><input type="radio" name="hp" value="overkill" checked>Overkill Mode</div>
-                    <div style="padding-bottom: 10px;"><input type="radio" name="hp" value="progress">Progressive Mode</div>
-                    <div style="padding-bottom: 10px;"><input type="radio" name="hp" value="constant">Constant Mode</div>
-                </div>
-                <p class="indent showing" id="expl-overkill">In Overkill Mode, the remaining bits after a final blow determines the HP value of the next boss. As an example, if Kappa defeats PogChamp (who has 100 HP) with 250 bits, then Kappa will have 150 health. If the multiplier is set to 2, then Kappa will start with 150 x 2 = 300 HP.</p>
-                <p class="indent hidden" id="expl-progress">In Progressive Mode, the first Bit Boss starts with an initial amount of HP, and each successive boss afterward has an incrementally higher HP value.</p>
-                <p class="indent hidden" id="expl-constant">In Constant Mode, each Bit Boss will always have the same amount of starting HP.</p>
-                <p><span style="color: red;">NOTE:</span> Changing HP modes resets the current boss and their HP.</p>
-                <h3>Theme Settings</h3><br>
-                <table id="colortable">
-                    <tr style="border: 0;">
-                        <td class="setting rightpad">Background:</td>
-                        <td class="setting"><input type="text" id="color-bg" /></td>
-                    </tr>
-                    <tr style="border: 0;">
-                        <td class="setting rightpad">Health Back:</td>
-                        <td class="setting"><input type="text" id="color-hb" /></td>
-                    </tr>
-                    <tr style="border: 0;">
-                        <td class="setting rightpad">Health Mid:</td>
-                        <td class="setting"><input type="text" id="color-hm" /></td>
-                    </tr>
-                    <tr style="border: 0;">
-                        <td class="setting rightpad">Health Front:</td>
-                        <td class="setting"><input type="text" id="color-hf" /></td>
-                    </tr>
-                    <tr style="border: 0;">
-                        <td class="setting rightpad">Text Color:</td>
-                        <td class="setting"><input type="text" id="color-tx" /></td>
-                    </tr>
-                </table>
-                <button id="colorreset" style="width: 147px;">Reset Theme</button>
-            </div>
+<head>
+    <title>Bit Boss Battles | Settings</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="./stylesheets/spectrum.css" rel="stylesheet">
+    <link href="./stylesheets/common.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./javascripts/spectrum.js"></script>
+    <script src="./javascripts/info.js"></script>
+    <script src="./javascripts/cookies.js"></script>
+    <script src="./javascripts/settings.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="container" style="margin-top: 0; padding-top: 0;">
+        <div style="text-align: center;"><img src="./images/logo.png"><br>
+            <h1 style="font-family: 'Press Start 2P', cursive;">By Nifty255</h1>
+            <h5 style="font-family: 'Press Start 2P', cursive;">Modified by rooLurk</h5></div>
+    </div>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li><a href="./">Home</a></li>
+        <li><a href="./launcher">Launcher</a></li>
+        <li class="active"><a>Settings</a></li>
+        <li><a href="./help">Help Page</a></li>
+    </ul>
+    <div id="status">Your changes will be saved automatically.</div>
+    <div class="container">
+        <p>Change your settings here.</p>
+        <p><span style="color: red;">NOTE:</span> If the widget is open while a setting is changed, you must refresh it
+            for the change to take effect.</p>
+        <h3>General Settings</h3><br>
+        <div class="tooltipable">
+            <input type="checkbox" id="sound"><label for="sound">Sound Effects</label><br>
+            <p class="tooltipy padded">Sound effects play when the boss is struck or defeated.</p>
         </div>
-    </body>
+        <div class="tooltipable">
+            <input type="checkbox" id="chroma"><label for="chroma">Chroma (Blue) Background</label><br>
+            <p class="tooltipy padded">This turns the widget's background blue, overriding the Transparent Background
+                option.</p>
+        </div>
+        <div class="tooltipable">
+            <input type="checkbox" id="persistent"><label for="persistent">Persistence</label><br>
+            <p class="tooltipy padded">Saves cookies about the current boss and their health for persistence between
+                streams.</p>
+        </div>
+        <div class="tooltipable">
+            <input type="checkbox" id="hideavtr"><label for="hideavtr">Hidden Avatar</label><br>
+            <p class="tooltipy padded">When enabled, the Bit Boss's avatar will be hidden. This is useful for streamers
+                who have concerns of viewers with inappropriate avatars becoming the Bit Boss.</p>
+        </div>
+        <h3>Theme Settings</h3><br>
+        <table id="colortable">
+            <tr style="border: 0;">
+                <td class="setting rightpad">Background:</td>
+                <td class="setting"><input type="text" id="color-bg"/></td>
+            </tr>
+            <tr style="border: 0;">
+                <td class="setting rightpad">Health Back:</td>
+                <td class="setting"><input type="text" id="color-hb"/></td>
+            </tr>
+            <tr style="border: 0;">
+                <td class="setting rightpad">Health Mid:</td>
+                <td class="setting"><input type="text" id="color-hm"/></td>
+            </tr>
+            <tr style="border: 0;">
+                <td class="setting rightpad">Health Front:</td>
+                <td class="setting"><input type="text" id="color-hf"/></td>
+            </tr>
+            <tr style="border: 0;">
+                <td class="setting rightpad">Text Color:</td>
+                <td class="setting"><input type="text" id="color-tx"/></td>
+            </tr>
+        </table>
+        <button id="colorreset" style="width: 147px;">Reset Theme</button>
+    </div>
+</div>
+</body>
 </html>

@@ -1,56 +1,64 @@
 <html>
-    <head>
-        <title>Bit Boss Battles | Auth Streamlabs</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="./javascripts/cookies.js"></script>
-        <script type="text/javascript">
-			$(document).ready(function() {
-				
-				var slToken = GetUrlParameter("code");
-				
-				parseCookies();
-				
-				var host = document.location.href.split("//")[1].split("/")[0];
-				var isDev = (host == "localhost:5000" || host == "local.bitbossbattles.io:5000");
+<head>
+	<title>Bit Boss Battles | Auth Streamlabs</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="./javascripts/cookies.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
 
-				$.post("./slauth", { slToken: slToken }, function(res) {
-					
-					if (res.error) { $("#body").html("<h1 style='color: red'>Error authorizing Streamlabs: " + res.error + "</h1>"); return; }
-					
-					setCookie({ name: "refrsl", newValue: res.refresh, secure: !isDev });
-					setCookie({ name: "authchange", newValue: "true" });
-					
-					$("#auth").text("Done!");
-					
-					setTimeout(function() { window.close(); }, 1000);
-				});
+			var slToken = GetUrlParameter("code");
 
-				// Gets a parameter from the URL.
-				function GetUrlParameter(sParam) {
+			parseCookies();
 
-					var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-						sURLVariables = sPageURL.split('&'),
-						sParameterName,
-						i;
+			var host = document.location.href.split("//")[1].split("/")[0];
+			var isDev =  (host === "localhost:5000" || host === "local.bitbossbattles.io:5000");
 
-					for (i = 0; i < sURLVariables.length; i++) {
-						sParameterName = sURLVariables[i].split('=');
+			$.post("./slauth", {slToken: slToken}, function (res) {
+				console.log(slToken);
+				if (res.error) {
+					$("#body").html("<h1 style='color: red'>Error authorizing Streamlabs: " + res.error + "</h1>");
+					return;
+				}
 
-						if (sParameterName[0] === sParam) {
-							return sParameterName[1] === undefined ? null : sParameterName[1];
-						}
+				setCookie({name: "refrsl", newValue: res.refresh, secure: !isDev});
+				setCookie({name: "authchange", newValue: "true"});
+
+				$("#auth").text("Done!");
+
+				setTimeout(function () {
+					window.close();
+				}, 1000);
+			});
+
+			// Gets a parameter from the URL.
+			/**
+			 * @return {null}
+			 */
+			function GetUrlParameter(sParam) {
+
+				var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? null : sParameterName[1];
 					}
 				}
-			});
-        </script>
-    </head>
-	<body>
-		<div id="body" style="width: 100%; height: 100%; display: table; text-align: center;">
-			<div style="vertical-align: middle; display: table-cell;">
-				<img src="./images/loading.gif">
-				<br>
-				<h1 id="auth">Authorizing...</h1>
-			</div>
-		</div>
-	</body>
+			}
+		});
+	</script>
+</head>
+<body>
+<div id="body" style="width: 100%; height: 100%; display: table; text-align: center;">
+	<div style="vertical-align: middle; display: table-cell;">
+		<img src="./images/loading.gif">
+		<br>
+		<h1 id="auth">Authorizing...</h1>
+	</div>
+</div>
+</body>
 </html>

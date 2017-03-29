@@ -1,59 +1,68 @@
 <html>
-    <head>
-        <title>Bit Boss Battles | Help Page</title>
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="./stylesheets/spectrum.css" rel="stylesheet">
-        <link href="./stylesheets/common.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="./javascripts/help.js"></script>
-    </head>
-    <body>
-        <div class="main">
-            <div class="container" style="margin-top: 0; padding-top: 0;">
-                <div style="text-align: center;"><img src="./images/logo.png"><br><h1 style="font-family: 'Press Start 2P', cursive;">By Nifty255</h1></div>
-            </div>
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-                <li><a href="./">Home</a></li>
-                <li><a href="./launcher">Launcher</a></li>
-                <li><a href="./settings">Settings</a></li>
-                <li class="active"><a>Help Page</a></li>
-            </ul>
-            <div class="container">
-                <p>Let's face it. Bit Boss Battles sometimes acts up, but you can use this page to fix the problem yourself! This page will update with new help topics occasionally, so be sure to check back! If these tips don't work or you don't see your issue yet, feel free to post your issue on <a href="https://github.com/Nifty255/Bit-Boss-Battles">GitHub</a>.</p>
-                <p>Click each help topic for instructions on how best to resolve the issue.</p>
-                <h3>Help Topics</h3><br>
-                <div id="bb-reset">
-                    <h4 class="topic"><a>My Bit Boss has reset!</a></h4>
-                    <div class="answer">
-						<p class="indent">Occasionally, updates can cause the Bit Boss to reset. It's ok though! You can set your Bit Boss again by following these steps below:</p>
-						<ol>
-							<li>Close your BBB widget (or disable it if used in stream software).</li>
-							<li>In the form below, set your boss using the exact username of the previous boss.</li>
-							<li>Set the desired max and current health.</li>
-							<li>Copy the link given and paste it into the desired browser or stream software.</li>
-							<li>Close the tab or delete the source, and open/re-enable the widget.</li>
-						</ol>
-						<table>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Boss Name (Lowercase):</td>
-                                <td class="setting"><input type="text" id="boss-name" style="width: 100px;"></td>
-                            </tr>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Max Health:</td>
-                                <td class="setting"><input type="number" id="hp-max" min="100" max="25000" value="1000" step="100" style="width: 100px;"></td>
-                            </tr>
-                            <tr style="border: 0;">
-                                <td class="setting rightpad">Current Health:</td>
-                                <td class="setting"><input type="number" id="hp-cur" min="100" max="25000" value="1000" step="1" style="width: 100px;"></td>
-                            </tr>
-                        </table>
-						<div class="link" id="link"><span style="color: red;">Boss not set. Enter a lowercase username to set the boss.</span></div>
-						<br>
-						<p><span style="color: red;">NOTE:</span> This is NOT how to set your own custom boss!</p>
-					</div>
+<head>
+    <title>Bit Boss Battles | Help Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="./stylesheets/spectrum.css" rel="stylesheet">
+    <link href="./stylesheets/common.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./javascripts/help.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="container" style="margin-top: 0; padding-top: 0;">
+        <div style="text-align: center;"><img src="./images/logo.png"><br>
+            <h1 style="font-family: 'Press Start 2P', cursive;">By Nifty255</h1>
+            <h5 style="font-family: 'Press Start 2P', cursive;">Modified by rooLurk</h5></div>
+    </div>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li><a href="./">Home</a></li>
+        <li><a href="./launcher">Launcher</a></li>
+        <li><a href="./settings">Settings</a></li>
+        <li class="active"><a>Help Page</a></li>
+    </ul>
+    <div class="container">
+        <p>Let's face it. Bit Boss Battles sometimes acts up, but you can use this page to fix the problem yourself!
+            This page will update with new help topics occasionally, so be sure to check back! If these tips don't work
+            or you don't see your issue yet, feel free to post your issue on <a
+                    href="https://github.com/Nifty255/Bit-Boss-Battles">GitHub</a>.</p>
+        <p>Click each help topic for instructions on how best to resolve the issue.</p>
+        <h3>Help Topics</h3><br>
+        <div id="bb-reset">
+            <h4 class="topic"><a>My Bit Boss has reset!</a></h4>
+            <div class="answer">
+                <p class="indent">Occasionally, updates can cause the Bit Boss to reset. It's ok though! You can set
+                    your Bit Boss again by following these steps below:</p>
+                <ol>
+                    <li>Close your BBB widget (or disable it if used in stream software).</li>
+                    <li>In the form below, set your boss using the exact username of the previous boss.</li>
+                    <li>Set the desired max and current health.</li>
+                    <li>Copy the link given and paste it into the desired browser or stream software.</li>
+                    <li>Close the tab or delete the source, and open/re-enable the widget.</li>
+                </ol>
+                <table>
+                    <tr style="border: 0;">
+                        <td class="setting rightpad">Boss Name (Lowercase):</td>
+                        <td class="setting"><input type="text" id="boss-name" style="width: 100px;"></td>
+                    </tr>
+                    <tr style="border: 0;">
+                        <td class="setting rightpad">Max Health:</td>
+                        <td class="setting"><input type="number" id="hp-max" min="100" max="25000" value="1000"
+                                                   step="100" style="width: 100px;"></td>
+                    </tr>
+                    <tr style="border: 0;">
+                        <td class="setting rightpad">Current Health:</td>
+                        <td class="setting"><input type="number" id="hp-cur" min="100" max="25000" value="1000" step="1"
+                                                   style="width: 100px;"></td>
+                    </tr>
+                </table>
+                <div class="link" id="link"><span style="color: red;">Boss not set. Enter a lowercase username to set the boss.</span>
                 </div>
+                <br>
+                <p><span style="color: red;">NOTE:</span> This is NOT how to set your own custom boss!</p>
             </div>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

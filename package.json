@@ -16,6 +16,7 @@
     "express": "^4.11.2",
     "mongoose": "^4.8.7",
     "request": "^2.81.0",
-    "serve-favicon": "^2.2.0"
+    "serve-favicon": "^2.2.0",
+    "express-ws": "latest"
   }
 }
